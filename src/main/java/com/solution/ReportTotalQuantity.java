@@ -1,18 +1,22 @@
 package com.solution;
 
-public class ReportTotalQuantity {
-    public ReportTotalQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+import java.util.List;
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+public class ReportTotalQuantity extends Report {
 
     public int getQuantity() {
         return quantity;
     }
 
     private int quantity;
+
+    public String toString() {
+        return "Quantity of all orders = " + this.quantity;
+    }
+
+    public ReportTotalQuantity(List<Order> list) {
+        quantity = list.size();
+    }
+
 
 }

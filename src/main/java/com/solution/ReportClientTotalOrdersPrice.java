@@ -1,24 +1,26 @@
 package com.solution;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 
-public class ReportClientTotalOrdersPrice {
+public class ReportClientTotalOrdersPrice extends Report{
 
-    BigDecimal totalPrice;
+    public double getClientTotalPrice() {
+        return clientTotalPrice;
+    }
+
+    private double clientTotalPrice;
     String clientId;
 
     public String toString(){
-        return "Total order price for client: " + clientId+ " "+String.valueOf(this.totalPrice);
+        return "Total order price for client ID = " + clientId+ ": "+String.valueOf(this.clientTotalPrice);
     }
     ReportClientTotalOrdersPrice(List<Order> list, Client client) {
         clientId= String.valueOf(client.getClientId());
-        totalPrice = list.stream()
+        clientTotalPrice = list.stream()
                 .filter(order-> order.getClientId().equals(client.getClientId()))
                 .map(Order::getPrice)
-
-                .reduce(BigDecimal.valueOf(0), (sum, order) -> sum.add(order));
+                .reduce(Double.valueOf(0), (sum, order) -> sum+order);
     }
 }
 

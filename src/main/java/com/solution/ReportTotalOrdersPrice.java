@@ -3,17 +3,21 @@ package com.solution;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class ReportTotalOrdersPrice {
+public class ReportTotalOrdersPrice extends Report {
 
-    public String toString(){
+    public String toString() {
         return "Total Order Price: " + String.valueOf(this.totalPrice);
     }
 
-    BigDecimal totalPrice;
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    private double totalPrice;
+
     public ReportTotalOrdersPrice(List<Order> list) {
-        //int quantity=0;
-         totalPrice = list.stream()
+        totalPrice = list.stream()
                 .map(Order::getPrice)
-                .reduce(BigDecimal.valueOf(0), (sum, order) -> sum.add( order));
+                .reduce(Double.valueOf(0), (sum, order) -> sum + order);
     }
 }
