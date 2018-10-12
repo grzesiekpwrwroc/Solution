@@ -9,17 +9,31 @@ public class Order {
     }
 
     private String clientId;
+
+    public int getRequestId() {
+        return requestId;
+    }
+
     private int requestId;
     private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
     private int quantity;
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    private BigDecimal price;
+    private double price;
 
-    public Order(String clientId, int requestId, String name, int quantity, BigDecimal price) {
+    public Order(String clientId, int requestId, String name, int quantity, double price) {
         this.clientId = clientId;
         this.requestId = requestId;
         this.name = name;
