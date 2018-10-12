@@ -1,1 +1,1 @@
-mvn exec:java -Dexec.mainClass=com.solution.Main
+mvn exec:java -Dexec.mainClass=com.solution.Main -Dexec.args="%*"
